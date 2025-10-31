@@ -27,30 +27,7 @@ git clone https://github.com/kkamilkasperek/web-scraper.git
 cd web-scraper
 ```
 
-#### 3. Configure Environment Variables
 
-Open `docker-compose.yml` and replace the following example values with your own:
-
-**Lines to modify in `docker-compose.yml`:**
-
-```yaml
-environment:
-  POSTGRES_DB: your_db_name
-  POSTGRES_USER: your_username
-  POSTGRES_PASSWORD: your_password
-  POSTGRES_HOST: db
-  POSTGRES_PORT: 5432
-```
-
-**Also update the `db` service credentials** (keep them matching):
-
-```yaml
-db:
-  environment:
-    POSTGRES_USER: your_username
-    POSTGRES_PASSWORD: your_password
-    POSTGRES_DB: scraper_db
-```
 
 **Configure settings.py:**
 ```python

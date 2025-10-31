@@ -4,10 +4,6 @@ services:
   db:
     image: postgres:16-alpine
     container_name: scraper_db
-    environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_db_name
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -23,12 +19,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    environment:
-      POSTGRES_DB: your_db_name
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_HOST: db
-      POSTGRES_PORT: 5432
     volumes:
       - .:/app
     ports:
