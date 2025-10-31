@@ -20,7 +20,11 @@ A Django-based web scraping application that extracts articles from websites, st
 
 ### Option 1: Using Docker
 
-#### 1. Clone the repository
+#### Clone the repository
+
+> [!NOTE]
+> This is setup for testing purposes not deployment.
+
 
 ```bash
 git clone https://github.com/kkamilkasperek/web-scraper.git
@@ -31,7 +35,7 @@ cd web-scraper
 
 **Configure settings.py:**
 ```python
-ALLOWED_HOSTS = ['*'] # Add your domain for release
+ALLOWED_HOSTS = ['*'] # * for development only
 DEBUG = False
 
 ```
@@ -57,8 +61,8 @@ docker compose up --build
 
 The application will be available at: **http://localhost:8000**
 
-#### 5. Create a Superuser (Optional)
-
+#### Create a Superuser (Optional)
+    if you want easily managing database
 ```bash
 docker compose exec web python manage.py createsuperuser
 ```
@@ -66,7 +70,7 @@ docker compose exec web python manage.py createsuperuser
 
 ### Option 2: Local Development (Without Docker)
 
-#### 1. Clone and Install Dependencies
+#### Clone and Install Dependencies
 
 ```bash
 git clone https://github.com/kkamilkasperek/web-scraper.git
@@ -76,13 +80,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-#### 2. Install PostgreSQL
+#### Install PostgreSQL
 
 Follow the instructions for your operating system to install PostgreSQL 16 or higher. Make sure the PostgreSQL server is running.
 
-#### 3. Configure PostgreSQL
+#### Configure PostgreSQL
 
-Optionalyl create a PostgreSQL database or use root database (configure in settings.py):
+Optionaly create a PostgreSQL database or use root database (configure in settings.py):
 
 ```bash
 psql -U postgres
@@ -93,13 +97,13 @@ GRANT ALL PRIVILEGES ON DATABASE scraper_db TO scraper_user;
 ```
 
 
-#### 4. Run Migrations
+#### Run Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-#### 5. Start the Development Server
+#### Start the Development Server
 
 ```bash
 python manage.py runserver
@@ -132,7 +136,7 @@ https://example.com/article3
 docker cp <urls.txt> scraper:/app
 ```
 
-#### 2. Run the scraping command
+#### 3. Run the scraping command
 
 **With Docker:**
 
