@@ -8,7 +8,12 @@ logger = logging.getLogger('scraper')
 def create_session():
     user_agent = UserAgent().random
     return HTMLSession(browser_args=[
-        '--no-sandbox',
+         '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--disable-software-rasterizer',
+        '--disable-extensions',
         f'--user-agent={user_agent}'
     ])
 
