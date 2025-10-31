@@ -52,7 +52,7 @@ gunicorn web_scraper.wsgi:application --bind 0.0.0.0:8000
 **Start containers:**
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 The application will be available at: **http://localhost:8000**
@@ -60,7 +60,7 @@ The application will be available at: **http://localhost:8000**
 #### 5. Create a Superuser (Optional)
 
 ```bash
-docker-compose exec web python manage.py createsuperuser
+docker compose exec web python manage.py createsuperuser
 ```
 
 
