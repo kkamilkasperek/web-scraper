@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['*'] # Add your domain for release
 DEBUG = False
 
 ```
-**Configure on which ports you want serve app in Dockerfile, entrypoint.sh and docker-compose.yaml**
+**Configure on what ports app will listen in Dockerfile, entrypoint.sh and docker-compose.yaml**
 ```yaml
     ports:
       - 8000:8000
@@ -45,13 +45,14 @@ DEBUG = False
 ```dockerfile
   EXPOSE 8000
 ```
-Start containers:
-```bash
-docker-compose up --build
-```
-
 ```entrypoint.sh
 gunicorn web_scraper.wsgi:application --bind 0.0.0.0:8000
+```
+
+**Start containers:**
+
+```bash
+docker-compose up --build
 ```
 
 The application will be available at: **http://localhost:8000**
