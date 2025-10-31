@@ -31,11 +31,26 @@ cd web-scraper
 
 **Configure settings.py:**
 ```python
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0'] # Add your domain for release
+ALLOWED_HOSTS = ['*'] # Add your domain for release
 DEBUG = False
 
 ```
-Start containers:
+**Configure on what ports app will listen in Dockerfile, entrypoint.sh and docker-compose.yaml**
+```yaml
+    ports:
+      - 8000:8000
+
+```
+
+```dockerfile
+  EXPOSE 8000
+```
+```entrypoint.sh
+gunicorn web_scraper.wsgi:application --bind 0.0.0.0:8000
+```
+
+**Start containers:**
+
 ```bash
 docker-compose up --build
 ```
@@ -67,7 +82,7 @@ Follow the instructions for your operating system to install PostgreSQL 16 or hi
 
 #### 3. Configure PostgreSQL
 
-Create a PostgreSQL database:
+Optionalyl create a PostgreSQL database or use root database (configure in settings.py):
 
 ```bash
 psql -U postgres
@@ -77,17 +92,6 @@ GRANT ALL PRIVILEGES ON DATABASE scraper_db TO scraper_user;
 \q
 ```
 
-#### 3. Configure Environment Variables
-
-Set the following environment variables or modify `settings.py`:
-
-```bash
-export POSTGRES_DB='your_db_name'
-export POSTGRES_USER='your_username'
-export POSTGRES_PASSWORD='your_password'
-export POSTGRES_HOST='localhost'
-export POSTGRES_PORT='5432'
-```
 
 #### 4. Run Migrations
 
@@ -123,12 +127,17 @@ https://example.com/article2
 https://example.com/article3
 ```
 
+#### 2. Copy file to container if using docker
+```bash
+docker cp <urls.txt> scraper:/app
+```
+
 #### 2. Run the scraping command
 
 **With Docker:**
 
 ```bash
-docker-compose exec web python manage.py scrape_articles --urls=urls.txt
+docker exec scraper python manage.py scrape_articles --urls=urls.txt
 ```
 
 **Locally:**
