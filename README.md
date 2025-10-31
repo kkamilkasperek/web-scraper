@@ -127,12 +127,17 @@ https://example.com/article2
 https://example.com/article3
 ```
 
+#### 2. Copy file to container if using docker
+```bash
+docker cp <urls.txt> scraper:/app
+```
+
 #### 2. Run the scraping command
 
 **With Docker:**
 
 ```bash
-docker-compose exec web python manage.py scrape_articles --urls=urls.txt
+docker exec scraper python manage.py scrape_articles --urls=urls.txt
 ```
 
 **Locally:**
