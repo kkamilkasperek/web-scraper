@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['*'] # Add your domain for release
 DEBUG = False
 
 ```
-**Configure on what ports app will listen in Dockerfile, entrypoint.sh and docker-compose.yaml**
+**Configure on what ports app will listen in Dockerfile, entrypoint.sh and docker compose.yaml**
 ```yaml
     ports:
       - 8000:8000
