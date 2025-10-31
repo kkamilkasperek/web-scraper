@@ -31,10 +31,11 @@ cd web-scraper
 
 **Configure settings.py:**
 ```python
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0'] # Add your domain in production
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0'] # Add your domain for release
 DEBUG = False
 
 ```
+Start containers:
 ```bash
 docker-compose up --build
 ```
