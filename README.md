@@ -82,7 +82,7 @@ Follow the instructions for your operating system to install PostgreSQL 16 or hi
 
 #### 3. Configure PostgreSQL
 
-Create a PostgreSQL database:
+Optionalyl create a PostgreSQL database or use root database (configure in settings.py):
 
 ```bash
 psql -U postgres
@@ -92,17 +92,6 @@ GRANT ALL PRIVILEGES ON DATABASE scraper_db TO scraper_user;
 \q
 ```
 
-#### 3. Configure Environment Variables
-
-Set the following environment variables or modify `settings.py`:
-
-```bash
-export POSTGRES_DB='your_db_name'
-export POSTGRES_USER='your_username'
-export POSTGRES_PASSWORD='your_password'
-export POSTGRES_HOST='localhost'
-export POSTGRES_PORT='5432'
-```
 
 #### 4. Run Migrations
 
