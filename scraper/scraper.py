@@ -9,11 +9,6 @@ def create_session():
     user_agent = UserAgent().random
     return HTMLSession(browser_args=[
          '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-        '--disable-software-rasterizer',
-        '--disable-extensions',
         f'--user-agent={user_agent}'
     ])
 
@@ -24,6 +19,7 @@ def fetch(session, url, timeout=10):
     return response
 
 def render_page(response, sleep=2, timeout=20):
+    logger.info(f'Rendering started...')
     response.html.render(sleep=sleep, timeout=timeout, keep_page=True)
     logger.info(f'Page rendered: {response.url}')
     return response.html

@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 WORKDIR /app
 
-# Install dependencies for postgresql and  Chromium browser
+# Install dependencies for postgresql and Chromium browser
 RUN apt-get update && apt-get install -y \
     postgresql-client \
     wget \
