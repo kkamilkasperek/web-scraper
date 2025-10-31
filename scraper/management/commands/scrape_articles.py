@@ -37,7 +37,7 @@ class Command(BaseCommand):
             raise CommandError(f'{urls_path} is not a file')
 
         with open(urls_path, 'r') as file:
-            urls = file.read().splitlines()
+            urls = [url.strip() for url in file.read().splitlines()]
 
         session = scraper.create_session()
         for i, url in enumerate(urls):
